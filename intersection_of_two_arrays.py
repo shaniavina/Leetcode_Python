@@ -23,3 +23,10 @@ class Solution(object):
                 
         
         return res
+
+
+set1  = set(nums1)
+        set2  = set(nums2)
+        res = set1.intersection(set2)
+        res = list(res)
+        return res
