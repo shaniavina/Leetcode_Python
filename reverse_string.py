@@ -11,3 +11,7 @@ class Solution(object):
             res[j] = s[i]
             
         return "".join(res)
+    
+    
+ ##solution 2
+        return s[::-1]
