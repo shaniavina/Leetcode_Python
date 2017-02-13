@@ -20,3 +20,18 @@ class Solution(object):
         return [rank_map[nums[i]] for i in range(len(nums))]
         
         
+###solution two
+
+i_l = [(v,i) for i,v in enumerate(nums)]
+        i_l.sort(key = lambda x:x[0])
+        
+        first_three = ["Gold Medal", "Silver Medal", "Bronze Medal"]
+        
+        ret = [''] * len(nums)
+        for i in range(len(nums) - 1, -1, -1):
+            if i >= len(nums) - 3:
+                ret[i_l[i][1]] = first_three[len(nums) - i - 1]
+            else:
+                ret[i_l[i][1]] = str(len(nums) - i)
+        return ret
+        
