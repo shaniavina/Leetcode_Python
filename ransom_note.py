@@ -24,6 +24,8 @@ class Solution(object):
 Second:
     
     return not Counter(ransomNote) - Counter(magazine)
+
+#### no global name
     
 Third:
     cnt = collections.Counter(magazine)
