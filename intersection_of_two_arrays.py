@@ -24,8 +24,9 @@ class Solution(object):
         
         return res
 
+    ####second
 
-set1  = set(nums1)
+        set1  = set(nums1)
         set2  = set(nums2)
         res = set1.intersection(set2)
         res = list(res)
