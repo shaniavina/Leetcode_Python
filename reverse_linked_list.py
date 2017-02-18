@@ -18,6 +18,9 @@ class Solution(object):
 # Time:  O(n)
 # Space: O(n)
 # Recursive solution.  
+
+
+##？？？？？？？？？？？？？？？？？？？
 class Solution2:
     # @param {ListNode} head
     # @return {ListNode}
@@ -37,7 +40,21 @@ class Solution2:
             return [begin, head]
         else:
             return [head, head]
-        
+########??????????????
+
+class Solution:
+    # @param {ListNode} head
+    # @return {ListNode}
+    def reverseList(self, head):
+        return self.doReverse(head, None)
+    def doReverse(self, head, newHead):
+        if head is None:
+            return newHead
+        next = head.next
+        head.next = newHead
+        return self.doReverse(next, head)
+
+
 if __name__ == "__main__":
     head = ListNode(1)
     head.next = ListNode(2)
