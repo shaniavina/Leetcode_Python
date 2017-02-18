@@ -11,7 +11,7 @@ class Solution(object):
         count = {}
         
         for c in s:
-            if c.lower() in count:
+            if c.lower() in count:                     ###.lower() not necessary
                 count[c.lower()] += 1
             else:
                 count[c.lower()] = 1
@@ -27,3 +27,4 @@ class Solution(object):
         return True
 
                 
+###.lower() not necessary
