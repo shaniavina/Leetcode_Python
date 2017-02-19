@@ -4,7 +4,7 @@ class Solution(object):
         :type n: int
         :rtype: bool
         """
-        numSet = set()
+        numSet = set()  ######apply SET!
         while n != 1 and n not in numSet:
             numSet.add(n)
             sum = 0
