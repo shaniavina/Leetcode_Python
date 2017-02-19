@@ -11,3 +11,4 @@ class Solution(object):
             cur += pre
             pre = a
         return pre
+######too slow recursively
