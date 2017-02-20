@@ -13,7 +13,7 @@ class Solution(object):
 
 #####2
 class Solution:
-    # @param n, an integer
+    # @param n, an integer                   ####Each time of "n &= n - 1", we delete one '1' from n.
     # @return an integer
     def hammingWeight(self, n):
         result = 0
