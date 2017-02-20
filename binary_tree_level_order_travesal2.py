@@ -11,28 +11,20 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[List[int]]
         """
-        if root == None:
+         if not root:
             return []
-        previous = (None, -1)
-        result = []
-        queue = [(root, 0)]
-        currentLevel = []
-        
-        while len(queue) > 0:
-            current = queue.pop(0)
-            if previous[1] < current[1]:
-                result.append(currentLevel)
-                currentLevel = [current[0].val]
+        current_level = -1
+        queue = [(root, 0)]    #####tuple (node, level)
+        res = []
+        while queue:
+            node, level = queue.pop(0)
+            if current_level < level:
+                res.insert(0, [node.val])   #####instead of .reverse()
+                current_level = level
             else:
-                currentLevel.append(current[0].val)
-                
-            if current[0].left != None:
-                queue.append((current[0].left, current[1] + 1))
-            if current[0].right != None:
-                queue.append((current[0].right, current[1] + 1)) 
-            previous = current
-        
-        result.append(currentLevel)
-        result = result[1:]
-        result.reverse()
-        return result
+                res[0].append(node.val)
+            if node.left:
+                queue.append((node.left, level + 1))
+            if node.right:
+                queue.append((node.right, level + 1))
+        return res
