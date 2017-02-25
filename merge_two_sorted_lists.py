@@ -26,3 +26,5 @@ class Solution(object):
         else:
             current.next = l2
         return guard.next
+
+    
