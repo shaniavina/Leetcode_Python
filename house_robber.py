@@ -15,3 +15,16 @@ class Solution(object):
             num_i_1, num_i_2 = num_i, num_i_1
             num_i = max(num_i_1, nums[i] + num_i_2)
         return num_i
+
+    
+    ####second solution
+    
+    def rob2(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        last, now = 0, 0
+        for i in nums:
+            last, now = now, max(last + i, now)
+        return now
