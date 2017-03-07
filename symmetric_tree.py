@@ -52,3 +52,5 @@ class Solution(object):
             return False
         return self.isSymmetricRecu(left.left, right.right) and self.isSymmetricRecu(left.right, right.left)
                 
+
+        
