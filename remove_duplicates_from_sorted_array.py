@@ -13,3 +13,5 @@ class Solution(object):
                 nums[last] = nums[i]
             i += 1
         return last + 1
+
+    
