@@ -12,7 +12,7 @@ class Solution(object):
         """
         fast, slow = head, head
         while fast and fast.next:
-            fast, slow = fast.next.next, slow.next
+            fast, slow = fast.next.next, slow.next   ####one step, two step; finally meet
             if fast == slow:
                 return True
         return False
