@@ -12,3 +12,5 @@ class Solution(object):
             reverse += copy % 10
             copy /= 10
         return x ==  reverse
+
+    
