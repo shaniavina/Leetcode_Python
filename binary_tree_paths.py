@@ -24,7 +24,7 @@ class Solution(object):
             for n in path:
                 ans += str(n.val) + "->"
             result.append(ans + str(node.val))
-
+#######result = ...+ .... not okay??
         if node.left:
             path.append(node)
             self.binaryTreePathsRecu(node.left, path, result)
