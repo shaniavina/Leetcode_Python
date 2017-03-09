@@ -29,3 +29,5 @@ class Stack(object):
         :rtype: bool
         """
         return len(self.A) == 0 and len(self.B) == 0
+
+    
