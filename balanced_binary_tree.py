@@ -19,3 +19,5 @@ class Solution(object):
         if left_height < 0 or right_height < 0 or abs(left_height - right_height) > 1:
             return -1
         return max(left_height, right_height) + 1
+
+    
