@@ -11,7 +11,6 @@ class Solution(object):
                 return True
             else:
                 num_pos_map[nums[i]] = i
-            
-        
+           
         return False
                 
