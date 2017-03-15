@@ -18,3 +18,5 @@ class Solution(object):
         else:
             return max(self.minDepth(root.left), self.minDepth(root.right)) + 1
         
+
+        
