@@ -16,4 +16,4 @@ class Solution(object):
                     b = stack.pop()
                     if goodPair[b] != l:
                         return False
-        return len(stack) == 0
+        return len(stack) == 0    ####you have to use stack, since no other kind of bracket inside
