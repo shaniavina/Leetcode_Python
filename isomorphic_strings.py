@@ -29,3 +29,4 @@ class Solution(object):
             else:
                 map2[c2] = c1
         return True
+    
