@@ -18,7 +18,7 @@ class Solution(object):
                 stack.append(cur)
                 cur = cur.left
             else:
-                cur = stack[-1]
-                stack.pop()
+                cur = stack.pop()
+             
                 cur = cur.right
         return res
