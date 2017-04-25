@@ -29,3 +29,5 @@ class Solution(object):
         tail.next = None
         q.next = guard.next
         return head
+
+    ###fabulous
