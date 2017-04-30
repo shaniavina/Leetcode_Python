@@ -22,3 +22,5 @@ class Solution(object):
             next_one.next = next_three
             current =  next_one
         return guard.next
+
+    
