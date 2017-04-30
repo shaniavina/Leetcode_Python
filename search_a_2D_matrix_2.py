@@ -8,7 +8,7 @@ class Solution(object):
         m = len(matrix)
         
         if m == 0:
-            return False
+            return False  ####have to confirm that m != 0 first
         
         n = len(matrix[0])
         
