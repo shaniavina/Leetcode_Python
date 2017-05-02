@@ -20,3 +20,6 @@ class Solution(object):
                 cows += 1
                 digits[int(guess[i])] -= 1
         return str(bulls) + 'A' + str(cows) + 'B'
+
+    
+    
