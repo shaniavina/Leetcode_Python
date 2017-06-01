@@ -12,4 +12,4 @@ class Solution(object):
         """
         if node and node.next:
             node.val = node.next.val
-            node.next = node.next.next
+            node.next = node.next.next   #####meaningless
