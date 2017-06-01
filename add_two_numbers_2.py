@@ -11,6 +11,8 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
+        
+        ####using stacks
         stk1, stk2 = [],[]
         while l1:
             stk1.append(l1.val)
