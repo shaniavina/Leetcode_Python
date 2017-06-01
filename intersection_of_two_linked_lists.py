@@ -47,13 +47,7 @@ class Solution(object):
         return curA
     
     
-    ############second solution
-    
-    # Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+    ############second solution, very very interesting
 
 class Solution(object):
     def getIntersectionNode(self, headA, headB):
