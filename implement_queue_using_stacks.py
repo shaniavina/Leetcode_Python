@@ -3,7 +3,7 @@ class Queue(object):
         """
         initialize your data structure here.
         """
-        self.A, self.B = [], []
+        self.A, self.B = [], []  ####use two stacks
 
     def push(self, x):
         """
@@ -36,3 +36,5 @@ class Queue(object):
         :rtype: bool
         """
         return len(self.A) == 0 and len(self.B) == 0
+
+    
