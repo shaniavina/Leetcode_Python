@@ -1,9 +1,4 @@
-# Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+# iteratively
 
 class Solution(object):
     def levelOrderBottom(self, root):
@@ -19,7 +14,7 @@ class Solution(object):
         while queue:
             node, level = queue.pop(0)
             if current_level < level:
-                res.insert(0, [node.val])   #####instead of .reverse()
+                res.insert(0, [node.val])   #####instead of .reverse(), you can use insert on the top of queue
                 current_level = level
             else:
                 res[0].append(node.val)
