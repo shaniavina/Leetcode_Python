@@ -14,10 +14,10 @@ class MinStack(object):
         :rtype: void
         """
         if not self.stack:
-            self.stack.append(0)
+            self.stack.append(0)   ####it is a zero
             self.min = x
         else:
-            self.stack.append(x - self.min)
+            self.stack.append(x - self.min)   ####x - min
             if x < self.min:
                 self.min = x
 
