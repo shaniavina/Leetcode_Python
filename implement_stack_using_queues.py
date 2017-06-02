@@ -3,7 +3,7 @@ class Stack(object):
         """
         initialize your data structure here.
         """
-        self.A, self.B = [], []
+        self.A= []
 
     def push(self, x):
         """
@@ -28,6 +28,6 @@ class Stack(object):
         """
         :rtype: bool
         """
-        return len(self.A) == 0 and len(self.B) == 0
+        return len(self.A) == 0
 
     
