@@ -14,8 +14,11 @@ class Solution(object):
         :rtype: TreeNode
         """
         
-        s,b = sorted([p.val, q.val])
+        s, b = sorted([p.val, q.val])
+        
         while not s <= root.val <= b:
-            root = root.left if s <= root.val else root.right
-            
+            if s > root.val:
+                root = root.right
+            else:
+                root = root.left
         return root
