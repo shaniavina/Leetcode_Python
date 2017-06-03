@@ -7,7 +7,7 @@ class Solution(object):
         """
         zero_in_degree_queue, in_degree, out_degree = collections.deque(), {}, {}
         
-        for i, j in prerequisites:
+        for i, j in prerequisites:    
             if i not in in_degree:
                 in_degree[i] = set()
             if j not in out_degree:
@@ -15,12 +15,12 @@ class Solution(object):
             in_degree[i].add(j)
             out_degree[j].add(i)
             
-        for i in range(numCourses):
+        for i in range(numCourses):    ####zero_queue: no income pointer
             if i not in in_degree:
                 zero_in_degree_queue.append(i)
         
         while zero_in_degree_queue:
-            prerequisite = zero_in_degree_queue.popleft()
+            prerequisite = zero_in_degree_queue.popleft()    ####when you delete a no-coming pointer, you have to remove all the outgoing pointer
             if prerequisite in out_degree:
                 for course in out_degree[prerequisite]:
                     in_degree[course].discard(prerequisite)
