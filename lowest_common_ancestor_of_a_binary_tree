@@ -13,10 +13,7 @@ class Solution(object):
         :type q: TreeNode
         :rtype: TreeNode
         """
-        if root in (None, p, q):
-            return root
         
-        left, right = [self.lowestCommonAncestor(child,p,q) for child in (root.left, root.right)]
         
         
         # 1. If the current subtree contains both p and q,
@@ -26,4 +23,13 @@ class Solution(object):
         # 3. If neither of them is in that subtree,
         #    return the node of that subtree.
         
-        return root if left and right else left or right
+        if root in (None, p, q):
+            return root
+        left = self.lowestCommonAncestor(root.left, p, q)
+        right = self.lowestCommonAncestor(root.right, p, q)
+        
+        if left and right:
+            return root
+        else:
+            return left or right
+    
