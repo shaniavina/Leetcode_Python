@@ -9,3 +9,5 @@ class Solution(object):
             if nums[i]:
                 nums[pos],nums[i] = nums[i],nums[pos]
                 pos += 1
+
+                
