@@ -6,6 +6,7 @@ class Solution(object):
         :rtype: List[int]
         """
         #####two pointers
+        ###time: O(N)
         l, r = 0, len(numbers) - 1
         while l < r:
             s = numbers[l] + numbers[r]
