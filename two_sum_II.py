@@ -5,7 +5,7 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        ###two pointers
+        #####two pointers
         l, r = 0, len(numbers) - 1
         while l < r:
             s = numbers[l] + numbers[r]
