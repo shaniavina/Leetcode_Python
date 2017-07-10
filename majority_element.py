@@ -36,3 +36,22 @@ class Solution(object):
             if count[key] >= (len(nums) + 1) / 2:
                 return key
       
+#### my solution
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        sorted_nums = sorted(nums)
+        count = 1
+        cur = sorted_nums[0]
+        if len(nums) < 2:
+            return nums[0]
+        for i in range(1, len(nums)):
+            if sorted_nums[i] == cur:
+                count += 1
+                if count > len(nums) / 2:
+                    return cur
+            else:
+                cur = sorted_nums[i]
