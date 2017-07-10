@@ -8,7 +8,6 @@ class Solution(object):
 
 ###second solution
 
-
         count = {}
         
         for num in nums:
