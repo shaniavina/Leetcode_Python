@@ -5,6 +5,8 @@ class Solution(object):
         :type val: int
         :rtype: int
         """
+        
+        ###two pointers, don't hv to delete them
         i, last = 0, len(nums) - 1
         while i <= last:
             if nums[i] == val:
@@ -13,5 +15,3 @@ class Solution(object):
             else:
                 i += 1
         return last + 1
-
-    
