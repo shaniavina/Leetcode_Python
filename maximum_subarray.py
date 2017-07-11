@@ -4,6 +4,8 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        
+        ###local max, global max
         if max(nums) < 0:
             return max(nums)
         global_max, local_max = float("-inf"), 0
