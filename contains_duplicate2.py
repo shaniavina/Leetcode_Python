@@ -14,3 +14,11 @@ class Solution(object):
            
         return False
                 
+####mine
+lookup = {}
+        for i, num in enumerate(nums):
+            if num in lookup and (i - lookup[num]) <= k:
+                return True
+            else:
+                lookup[num] = i
+        return False
