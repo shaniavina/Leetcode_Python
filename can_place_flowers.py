@@ -10,6 +10,5 @@ class Solution(object):
                 n -= 1
                 flowerbed[i] = 1
         return n <= 0
-                
-                
+               
               ####enumerate usage
