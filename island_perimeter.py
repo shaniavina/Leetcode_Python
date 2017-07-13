@@ -17,4 +17,4 @@ class Solution(object):
                         repeat += 1
         return 4 * count - 2 * repeat
             
-            
+       
