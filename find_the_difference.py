@@ -20,7 +20,7 @@ class Solution(object):
                 t_map[l] = 1
                 
         for l in t_map:
-            if t_map[l] != s_map.get(l, 0):
+            if t_map[l] != s_map.get(l, 0):    ####dict.get(key, defaultValue), return defaultValue if dict[key] is missing
                 return l
                 
         
