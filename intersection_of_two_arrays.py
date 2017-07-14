@@ -31,3 +31,19 @@ class Solution(object):
         res = set1.intersection(set2)
         res = list(res)
         return res
+
+    ######hash table
+            lookup = {}
+        
+        for num in nums1:
+            if num in lookup:
+                lookup[num] += 1
+            else:
+                lookup[num] = 1
+        
+        result = []
+        for num in nums2:
+            if num in lookup and lookup[num] > 0:
+                result.append(num)
+                lookup[num] = 0
+        return result
