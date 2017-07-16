@@ -10,7 +10,7 @@ class Solution(object):
         cnt = [0] * 26
         for c in p:
             cnt[ord(c) - ord('a')] += 1
-        left, right = 0, 0
+        left, right = 0, 0                         #####left, right pointer
         while right < len(s):
             cnt[ord(s[right]) - ord('a')] -= 1
             while left <= right and cnt[ord(s[right]) - ord('a')] < 0:   #####while if!!
@@ -20,3 +20,5 @@ class Solution(object):
                 result.append(left)
             right += 1
         return result
+
+    
