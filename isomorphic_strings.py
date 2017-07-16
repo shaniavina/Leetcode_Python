@@ -5,28 +5,36 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
+#         if len(s) != len(t):
+#             return False
+#         return self.halfIsom(s, t) and self.halfIsom(t, s)
+    
+    
+#     def halfIsom(self, s, t):
+#         lookup = {}
+#         for i in range(len(s)):
+#             if s[i] in lookup:
+#                 if lookup[s[i]] != t[i]:
+#                     return False
+#             else:
+#                 lookup[s[i]] = t[i]
+#         return True        ######have to do the halfIsom if you only set up one hash table
+
+        #####second
         if len(s) != len(t):
             return False
-            
-        if len(s) == len(t) and len(s) == 0:
-            return True
-        
-        n = len(s)
         map1 = {}
         map2 = {}
-        for i in range(n):
-            c1 = s[i]
-            c2 = t[i]
-            if c1 in map1:
-                if c2 != map1[c1]:
+        for i in range(len(s)):
+            if s[i] in map1:
+                if map1[s[i]] != t[i]:
                     return False
             else:
-                map1[c1] = c2
+                map1[s[i]] = t[i]
                 
-            if c2 in map2:
-                if c1 != map2[c2]:
+            if t[i] in map2:
+                if map2[t[i]] != s[i]:
                     return False
             else:
-                map2[c2] = c1
+                map2[t[i]] = s[i]
         return True
-    
