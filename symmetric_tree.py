@@ -11,46 +11,35 @@ class Solution(object):
         :type root: TreeNode
         :rtype: bool
         """
-        '''
-        def mirror(self, root):
-        if not root:
-            return root
-        root.left, root.right = self.mirror(root.right), self.mirror(root.left)
-        return root
-        '''
+        #######iteration with stack
         if not root:
             return True
-        S1 = [root]
-        S2 = [root]
-        while S1 and S2:
-            cur1 = S1.pop(0)
-            cur2 = S2.pop(0)
-            if (cur1 or cur2) and not (cur1 and cur2):
+        stk = [(root.left, root.right)]
+        while stk:
+            node = stk.pop()
+            node1 = node[0]
+            node2 = node[1]
+            if not node1 and not node2:
+                continue
+            if not node1 or not node2 or node1.val != node2.val:
                 return False
-            if cur1 and cur2 and (cur1.val != cur2.val):
-                return False
-            if cur1:
-                S1.append(cur1.left if cur1.left else None)
-                S1.append(cur1.right if cur1.right else None)
-            if cur2:
-                S2.append(cur2.right if cur2.right else None)
-                S2.append(cur2.left if cur2.left else None)
-           
+            stk.append((node1.left, node2.right))
+            stk.append((node1.right, node2.left))
+            
         return True
         
-        
-        ####solution2
-         if root is None:
-            return True
-        
-        return self.isSymmetricRecu(root.left, root.right)
+#         #####recursion
+#         if not root:
+#             return True
+#         return self.isSymmetricRecu(root.left, root.right)
     
-    def isSymmetricRecu(self, left, right):
-        if left is None and right is None:
-            return True
-        if left is None or right is None or left.val != right.val:
-            return False
-        return self.isSymmetricRecu(left.left, right.right) and self.isSymmetricRecu(left.right, right.left)
-                
+#     def isSymmetricRecu(self, left, right):
+#         if not left and not right:
+#             return True
+#         if not left or not right or left.val != right.val:
+#             return False
+#         return self.isSymmetricRecu(left.left, right.right) and self.isSymmetricRecu(left.right, right.left)
 
+
+        
         
