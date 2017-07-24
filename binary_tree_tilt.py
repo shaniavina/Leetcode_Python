@@ -11,12 +11,15 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        self.ans = 0
-        def _sum(node):
-            if not node:
-                return 0
-            left, right = _sum(node.left), _sum(node.right)
-            self.ans += abs(left - right)
-            return node.val + left + right
-        _sum(root)
-        return self.ans
+        self.res = 0
+        self.postOrderTraverse(root)
+        return self.res
+    
+    def postOrderTraverse(self, node):       #####post order traverse
+        if not node:
+            return 0
+        left = self.postOrderTraverse(node.left)
+        right = self.postOrderTraverse(node.right)
+        self.res += abs(left - right)
+        return left + right + node.val
+    
