@@ -5,19 +5,20 @@
 #         self.left = None
 #         self.right = None
 
+# Time:  O(n)
+# Space: O(h), h is height of binary tree
 class Solution(object):
     def isBalanced(self, root):
         """
         :type root: TreeNode
         :rtype: bool
         """
-        return (self.getHeight(root) >= 0)
-    def getHeight(self, root):
-        if root is None:
+        return self.isBalancedRecu(root) >= 0
+    def isBalancedRecu(self, root):
+        if not root:
             return 0
-        left_height, right_height = self.getHeight(root.left), self.getHeight(root.right)
-        if left_height < 0 or right_height < 0 or abs(left_height - right_height) > 1:
+        left = self.isBalancedRecu(root.left)    ####get height
+        right = self.isBalancedRecu(root.right)
+        if left < 0 or right < 0 or abs(left - right) > 1:
             return -1
-        return max(left_height, right_height) + 1
-
-    
+        return max(left, right) + 1 
