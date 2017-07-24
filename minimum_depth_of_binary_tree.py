@@ -11,12 +11,9 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        if root is None:
+        if not root:
             return 0
         if root.left and root.right:
             return min(self.minDepth(root.left), self.minDepth(root.right)) + 1
         else:
-            return max(self.minDepth(root.left), self.minDepth(root.right)) + 1
-        
-
-        
+            return max(self.minDepth(root.left), self.minDepth(root.right)) + 1    #####niubility
