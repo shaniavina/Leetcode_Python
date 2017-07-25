@@ -11,26 +11,23 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[str]
         """
-        result, path = [], []
+        #####preorder traverse
+        result, path = [], ''
         self.binaryTreePathsRecu(root, path, result)
         return result
     
     def binaryTreePathsRecu(self, node, path, result):
-        if node is None:
+        if not node:
             return
+        
+        path += str(node.val)
+        
+        if not node.left and not node.right:
+            result.append(path)
 
-        if node.left is None and node.right is None:
-            ans = ""
-            for n in path:
-                ans += str(n.val) + "->"
-            result.append(ans + str(node.val))
-#######result = ...+ .... not okay??
         if node.left:
-            path.append(node)
-            self.binaryTreePathsRecu(node.left, path, result)
-            path.pop()
-
+            self.binaryTreePathsRecu(node.left, path + '->', result)
+           
         if node.right:
-            path.append(node)
-            self.binaryTreePathsRecu(node.right, path, result)
-            path.pop()
+            self.binaryTreePathsRecu(node.right, path + '->', result)
+           
