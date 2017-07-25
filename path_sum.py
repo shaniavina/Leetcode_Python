@@ -17,4 +17,5 @@ class Solution(object):
         if root.left is None and root.right is None and root.val == sum:
             return True
         return self.hasPathSum(root.left, sum - root.val) or self.hasPathSum(root.right, sum - root.val)
+    
         
