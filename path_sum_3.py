@@ -14,11 +14,11 @@ class Solution(object):
         """
         if not root:
             return 0
-        return self.helper(root, 0, sum) + self.pathSum(root.left, sum) + self.pathSum(root.right, sum)
-        
-    def helper(self, root, pre, sum):
-        if not root:
+        return self.pathSumRecu(root, 0, sum) + self.pathSum(root.left, sum) + self.pathSum(root.right, sum)
+    def pathSumRecu(self, node, pre, sum):
+        if not node:
             return 0
-        cur = pre + root.val
-        return int(cur == sum) + self.helper(root.left, cur, sum) + self.helper(root.right, cur, sum)
+        cur = pre + node.val
+        return int(cur == sum) + self.pathSumRecu(node.left, cur, sum) + self.pathSumRecu(node.right, cur, sum)
+    
     
