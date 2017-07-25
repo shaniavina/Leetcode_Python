@@ -14,11 +14,22 @@ class Solution(object):
         :rtype: TreeNode
         """
         
-        s, b = sorted([p.val, q.val])
+#         s, b = sorted([p.val, q.val])
         
-        while not s <= root.val <= b:
-            if s > root.val:
-                root = root.right
-            else:
-                root = root.left
-        return root
+#         while not s <= root.val <= b:
+#             if s > root.val:
+#                 root = root.right
+#             else:
+#                 root = root.left
+#         return root
+
+
+#####recursion also
+        if not root:
+            return None
+        if root.val > max(p.val, q.val):
+            return self.lowestCommonAncestor(root.left, p, q)
+        elif root.val < min(p.val, q.val):
+            return self.lowestCommonAncestor(root.right, p, q)
+        else:
+            return root
