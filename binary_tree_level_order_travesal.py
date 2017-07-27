@@ -1,28 +1,4 @@
-# iteratively: BFS
-
-class Solution(object):
-    def levelOrder(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[List[int]]
-        """
-        if root is None:
-            return []   ####base case
-        result, current = [], [root]
-        while current:
-            next_level, vals = [], []
-            for node in current:
-                vals.append(node.val)
-                if node.left:
-                    next_level.append(node.left)
-                if node.right:
-                    next_level.append(node.right)
-            current = next_level
-            result.append(vals)
-        return result
-    
-    ####recursively
-    # Definition for a binary tree node.
+# Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, x):
 #         self.val = x
@@ -35,23 +11,36 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[List[int]]
         """
-    
+        ####recursion, (root, level, res)
         res = []
-        self.levelOrderRecu(root, res, 0)
+        self.levelOrderRecu(root, 0, res)
         return res
-        
-    def levelOrderRecu(self, root, res, level):
+    def levelOrderRecu(self, root, level, res):
         if not root:
-            return None
-        
-        if len(res) == level:  ####level not contained in list
+            return
+        if len(res) == level:
             res.append([root.val])
         else:
             res[level].append(root.val)
-        
-        self.levelOrderRecu(root.left, res, level + 1)
-        self.levelOrderRecu(root.right, res, level + 1)
-        
-        
-
+        self.levelOrderRecu(root.left, level + 1, res)
+        self.levelOrderRecu(root.right, level + 1, res)
     
+#         ####level order, BFS, queue
+#         if not root:
+#             return []
+#         q = [root]
+#         res = []
+        
+#         while q:
+#             next_q = collections.deque([])
+#             tmp_res = []
+#             for node in q:
+#                 tmp_res.append(node.val)
+#                 if node.left:
+#                     next_q.append(node.left)
+#                 if node.right:
+#                     next_q.append(node.right)
+#             res.append(tmp_res)
+#             q = next_q
+#         return res
+        
