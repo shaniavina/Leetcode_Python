@@ -13,20 +13,25 @@ class Solution(object):
         """
         if not root:
             return []
-        res, cur, level = [], [root], 1
-        while cur:
-            next_level, vals = [], []
-            for node in cur:
-                vals.append(node.val)
+        q = [root]
+        res = []
+        level = 1   ####level parameter to control the output order
+        while q:
+            next_q = collections.deque([])
+            tmp_res = []
+            
+            for node in q:
+                tmp_res.append(node.val)
                 if node.left:
-                    next_level.append(node.left)
+                    next_q.append(node.left)
                 if node.right:
-                    next_level.append(node.right)
+                    next_q.append(node.right)
             if level % 2:
-                res.append(vals)
+                res.append(tmp_res)
             else:
-                res.append(vals[::-1])
+                res.append(tmp_res[::-1])
+                
             level += 1
-            cur = next_level
-        return res
+            q = next_q
         
+        return res
