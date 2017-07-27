@@ -13,7 +13,7 @@ class Solution(object):
         """
         # Time:  O(n)
 # Space: O(h)
-####level order traversal, queue
+####level order traversal, queue, next_q
         if not root:
             return None
         q = collections.deque([root])
