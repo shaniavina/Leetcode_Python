@@ -11,12 +11,15 @@ class Solution(object):
         :type nums: List[int]
         :rtype: TreeNode
         """
-        return self.sortedArrayToBSTRec(nums, 0, len(nums))
-    def sortedArrayToBSTRec(self, nums, start, end):
-        if start == end:
+        return self.sortedArrayToBSTRecu(nums, 0, len(nums))
+    def sortedArrayToBSTRecu(self, nums, left, right):
+        if left >= right:
             return None
-        mid = start + (end - start) / 2
+        mid = (left + right) / 2
         node = TreeNode(nums[mid])
-        node.left = self.sortedArrayToBSTRec(nums, start, mid)
-        node.right = self.sortedArrayToBSTRec(nums, mid + 1, end)
+        node.left = self.sortedArrayToBSTRecu(nums, left, mid)
+        node.right = self.sortedArrayToBSTRecu(nums, mid + 1, right)
         return node
+    
+    
+    
