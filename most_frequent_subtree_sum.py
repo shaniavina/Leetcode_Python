@@ -7,19 +7,23 @@
 
 class Solution(object):
     def findFrequentTreeSum(self, root):
-       
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
         if not root:
             return []
-            
+        
         def getSum(node):
             if not node:
                 return 0
-            s = node.val + getSum(node.left) + getSum(node.right)
-            c[s] += 1
-            return s
+            sumi = node.val + getSum(node.left) + getSum(node.right)
+            mapi[sumi] += 1
+            return sumi
         
-        from collections import Counter
-        c = Counter()
+        mapi = collections.defaultdict(int)
         getSum(root)
-        frequent = max(c.values())
-        return [s for s in c.keys() if c[s] == frequent]
+        max_count = max(mapi.itervalues())
+        return [k for k, v in mapi.iteritems() if v == max_count]
+        
+    
