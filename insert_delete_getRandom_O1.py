@@ -5,8 +5,8 @@ class RandomizedSet(object):
         """
         Initialize your data structure here.
         """
-        self.__set = []
-        self.__used = {}
+        self.set = []
+        self.map = {}  ###cuz we need constant time, so we set up hash table
 
     def insert(self, val):
         """
@@ -14,12 +14,10 @@ class RandomizedSet(object):
         :type val: int
         :rtype: bool
         """
-        if val in self.__used:
+        if val in self.map:
             return False
-
-        self.__set += val,
-        self.__used[val] = len(self.__set)-1
-
+        self.set.append(val)
+        self.map[val] = len(self.set) - 1
         return True
 
     def remove(self, val):
@@ -28,20 +26,23 @@ class RandomizedSet(object):
         :type val: int
         :rtype: bool
         """
-        if val not in self.__used:
+        if val not in self.map:
             return False
-        self.__used[self.__set[-1]] = self.__used[val]
-        self.__set[self.__used[val]], self.__set[-1] = self.__set[-1], self.__set[self.__used[val]]
         
-        self.__used.pop(val)
-        self.__set.pop()
+        self.map[self.set[-1]] = self.map[val]    ###to ensure the constant time of deleting from list, put it in the end of list
+        self.set[self.map[val]], self.set[-1] = self.set[-1], self.set[self.map[val]]
+        
+        self.map.pop(val)    ###delete the last element from a hash table
+        self.set.pop()
+        
         return True
+
     def getRandom(self):
         """
         Get a random element from the set.
         :rtype: int
         """
-        return self.__set[randint(0, len(self.__set) - 1)]
+        return self.set[randint(0, len(self.set) - 1)]
 
 
 # Your RandomizedSet object will be instantiated and called as such:
