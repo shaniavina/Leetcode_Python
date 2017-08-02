@@ -7,21 +7,21 @@ class Solution(object):
         :type nums: List[int]
         :type numsSize: int
         """
-        self.__nums = nums
+        self.nums = nums
 
     def pick(self, target):
         """
         :type target: int
         :rtype: int
         """
-        reservoir = -1
-        n = 0
-        for i in range(len(self.__nums)):
-            if self.__nums[i] != target:
+        res = -1 
+        cnt = 0
+        for i in range(len(self.nums)):
+            if self.nums[i] != target:
                 continue
-            reservoir = i if n == 0 or randint(1, n + 1) == 1 else reservoir
-            n += 1
-        return reservoir
+            res = i if randint(1, cnt + 1) == 1 else res
+            cnt += 1
+        return res
 
 
 # Your Solution object will be instantiated and called as such:
