@@ -1,28 +1,31 @@
+
+from random import randint
 class Solution(object):
 
     def __init__(self, nums):
         """
         :type nums: List[int]
         """
-        self.__nums = nums
+        self.nums = nums
 
     def reset(self):
         """
         Resets the array to its original configuration and return it.
         :rtype: List[int]
         """
-        return self.__nums
+        return self.nums
 
     def shuffle(self):
         """
         Returns a random shuffling of the array.
         :rtype: List[int]
         """
-        nums = list(self.__nums)
-        for i in range(len(nums)):
-            j = random.randint(i, len(nums) - 1)
-            nums[i], nums[j] = nums[j], nums[i]
-        return nums
+        n = list(self.nums)    ####you dont want to change self.nums, list() == deep copy
+        for i in range(len(n)):
+            j = randint(i, len(n) - 1)
+            n[i], n[j] = n[j], n[i]    ####shuffle the rest of nums
+        return n
+
 
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(nums)
