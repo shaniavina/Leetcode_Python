@@ -15,3 +15,14 @@ class Solution(object):
                 reverse(s, i, j)
                 i = j + 1
         return ''.join(s)
+    
+    
+    #####second
+    class Solution(object):
+    def reverseWords(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        return ' '.join(s.split()[::-1])[::-1]
+        
