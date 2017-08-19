@@ -5,5 +5,9 @@ class Solution(object):
         :rtype: str
         """
         return " ".join(reversed(s.split()))
+        
+        ####
+        return s[::-1]
+        
 if __name__ == '__main__':
     print Solution().reverseWords('hello world')
