@@ -5,6 +5,7 @@ class Solution(object):
         :type b: str
         :rtype: int
         """
+        ###errrrrr
         if a == b:
             return -1
         return max(len(a),len(b))
