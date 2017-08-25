@@ -5,15 +5,13 @@ class Solution(object):
         :type b: str
         :rtype: str
         """
-        result, carry, val = '', 0, 0
-        for i in range(max(len(a), len(b))):
-            val = carry
-            if i < len(a):
-                val += int(a[-(i + 1)])
-            if i < len(b):
-                val += int(b[-(i + 1)])
-            val, carry = val % 2, val / 2
-            result += str(val)
-        if carry:
-            result += str(carry)
-        return result[::-1]
+        if not a:
+            return b
+        if not b:
+            return a
+        if a[-1] == '1' and b[-1] == '1':
+            return self.addBinary(self.addBinary(a[:-1], b[:-1]), '1') + '0'
+        if a[-1] == '0' and b[-1] == '0':
+            return self.addBinary(a[:-1], b[:-1]) + '0'
+        else:
+            return self.addBinary(a[:-1], b[:-1]) + '1'
