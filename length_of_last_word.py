@@ -4,11 +4,4 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        length = 0
-        for i in reversed(s):  ####s[::-1]
-            if i == " ":
-                if length:
-                    break
-            else:
-                length += 1
-        return length
+        return len(s.split()[-1]) if s.split() else 0
