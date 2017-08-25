@@ -4,16 +4,16 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        stack = []
+        stk = []
         goodPair = {"(":")","[":"]","{":"}"}
-        for l in s:
-            if l == "(" or l == "[" or l == "{":
-                stack.append(l)
+        for c in s:
+            if c in ['[','(','{']:
+                stk.append(c)
             else:
-                if len(stack) == 0:
+                if not stk:
                     return False
                 else:
-                    b = stack.pop()
-                    if goodPair[b] != l:
+                    b = stk.pop()     ### before pop(), have to consider if it is null or not
+                    if goodPair[b] != c:
                         return False
-        return len(stack) == 0    ####you have to use stack, since no other kind of bracket inside
+        return len(stk) == 0
