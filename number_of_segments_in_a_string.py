@@ -9,3 +9,5 @@ class Solution(object):
             if s[i] == ' ' and s[i - 1] != ' ':
                 result += 1
         return result
+
+    
