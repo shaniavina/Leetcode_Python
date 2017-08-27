@@ -4,9 +4,11 @@ class Solution(object):
         :type num: int
         :rtype: str
         """
-        res = ''
-        n = abs(num)
+         if num == 0:
+            return '0'   ####not in the loop
+        n, res = abs(num), ''    ###consider sign
         while n:
-            res += str(n % 7)
+            res = str(n % 7) + res    ###reverse the string
             n /= 7
-        return ['', '-'][num < 0] + res[::-1] or '0'
+        
+        return res if num > 0 else '-' + res
