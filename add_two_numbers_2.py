@@ -11,30 +11,28 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
-        
-        ####using stacks
-        stk1, stk2 = [],[]
+        stk1, stk2 = [], []
         while l1:
             stk1.append(l1.val)
             l1 = l1.next
         while l2:
             stk2.append(l2.val)
             l2 = l2.next
-            
-        sum = 0
-        prev, head = None, None
+        
+       
+        pre, cur, sum = None, None, 0
         while stk1 or stk2:
-            sum /= 10
             if stk1:
                 sum += stk1.pop()
             if stk2:
                 sum += stk2.pop()
+                
+            cur = ListNode(sum % 10)
+            cur.next = pre
+            pre = cur
+            sum /= 10
+        if sum:
+            cur = ListNode(sum)
+            cur.next = pre
+        return cur
             
-            head = ListNode(sum % 10)
-            head.next = prev
-            prev = head
-            
-        if sum >= 10:
-            head = ListNode(sum / 10)
-            head.next = prev
-        return head
