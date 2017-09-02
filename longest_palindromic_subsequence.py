@@ -4,7 +4,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        if s == s[::-1]:
+        if s == s[::-1]:      ###without this command, time limit exceeded
             return len(s)
         dp = [[1] * len(s) for i in range(2)]
         for i in reversed(range(len(s))):
