@@ -4,11 +4,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        
-        result, stk = [0] * len(nums), []
-        for i in reversed(range(2 * len(nums))):
-            while stk and stk[-1] <= nums[i % len(nums)]:
-                stk.pop()
-            result[i % len(nums)]  = stk[-1] if stk else -1
-            stk.append(nums[i % len(nums)])
-        return result
+        stack, res = [], [-1] * len(nums)
+        for i in range(len(nums)) * 2:
+            while stack and (nums[stack[-1]] < nums[i]):
+                res[stack.pop()] = nums[i]
+            stack.append(i)
+        return res
