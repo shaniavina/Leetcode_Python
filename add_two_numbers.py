@@ -11,25 +11,21 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
-        
-        dummy = ListNode('-inf')
-        cur, carry = dummy, 0
-        
+        dummy = ListNode(-1)
+        cur, sum = dummy, 0
         while l1 or l2:
-            val = carry
             if l1:
-                val += l1.val
+                sum += l1.val
                 l1 = l1.next
             if l2:
-                val += l2.val
+                sum += l2.val
                 l2 = l2.next
-            val, carry = val % 10, val / 10
-            cur.next = ListNode(val)
+            cur.next = ListNode(sum % 10)
             cur = cur.next
-            
-        if carry == 1:
+            sum /= 10
+        if sum:
             cur.next = ListNode(1)
-            
         return dummy.next
-        
             
+            
+    
