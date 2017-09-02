@@ -11,13 +11,18 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        result = []
-        self.rightSideViewDFS(root, 1, result)
-        return result
-    def rightSideViewDFS(self, node, depth, result):
-        if not node:
-            return
-        if depth > len(result):
-            result.append(node.val)
-        self.rightSideViewDFS(node.right, depth + 1, result)     #######right first
-        self.rightSideViewDFS(node.left, depth + 1, result)
+        if not root:
+            return []
+        q, res = [root], []
+        
+        while q:
+            next_q = []
+            for tmp in q:
+                if tmp.left:
+                    next_q.append(tmp.left)
+                if tmp.right:
+                    next_q.append(tmp.right)
+            
+            res.append(tmp.val)   ##tmp is the last one in this level
+            q = next_q
+        return res
