@@ -10,13 +10,17 @@ class Solution:
     # @param root, a tree link node
     # @return nothing
     def connect(self, root):
-        head = root
+        if not root:
+            return 
+        q, next_q = [root], []
         
-        while head:
-            cur = head
-            while cur and cur.left:
-                cur.left.next = cur.right
-                if cur.next:
-                    cur.right.next = cur.next.left
-                cur = cur.next
-            head = head.left
+        while q:
+            tmp = q.pop(0)
+            if tmp.left:
+                next_q.append(tmp.left)
+            if tmp.right:
+                next_q.append(tmp.right)
+            if q:
+                tmp.next = q[0]
+            if not q and next_q:
+                q, next_q = next_q, q    ###next_q = q becuz next_q has to be None
