@@ -4,22 +4,17 @@ class Solution(object):
         :type s: str
         :rtype: List[List[str]]
         """
-        result = []
-        self.partitionRecu(result, [], s, 0)
-        return result
-        
-    def partitionRecu(self, result, cur, s, i):
-        if i == len(s):
-            result.append(list(cur))
-        else:
-            for j in xrange(i, len(s)):
-                if self.isPalindrome(s[i: j + 1]):
-                    cur.append(s[i: j + 1])
-                    self.partitionRecu(result, cur, s, j + 1)
-                    cur.pop()
-                
-    def isPalindrome(self, s):
-        for i in xrange(len(s) / 2):
-            if s[i] != s[-(i + 1)]:
-                return False
-        return True
+        self.res = []
+        self.dfs(s, [])
+        return self.res
+
+    def dfs(self, s, path):
+        if not s:
+            self.res.append(list(path))
+        for i in range(1, len(s) + 1):
+            if self.isPal(s[:i]):
+                self.dfs(s[i:], path + [s[:i]])   ###can only concatenate list; [[]]
+    def isPal(self, s):
+        return s == s[::-1]
+    
+ 
