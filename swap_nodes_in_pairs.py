@@ -10,17 +10,15 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        if head == None or head.next == None:
+        if not head or not head.next:
             return head
-        guard = ListNode(1)
-        guard.next = head
-        current = guard
-        while current.next and current.next.next:
-            next_one, next_two, next_three = current.next, current.next.next, current.next.next.next
-            current.next = next_two
+        dummy = ListNode('-inf')
+        dummy.next = head
+        cur = dummy
+        while cur.next and cur.next.next:
+            next_one, next_two, next_three = cur.next, cur.next.next, cur.next.next.next
+            cur.next = next_two
             next_two.next = next_one
             next_one.next = next_three
-            current =  next_one
-        return guard.next
-
-    
+            cur = next_one
+        return dummy.next
