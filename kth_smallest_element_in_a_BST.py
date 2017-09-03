@@ -12,15 +12,13 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        s, cur, rank = [], root, 0
-        while s or cur:
+        res, cur, stk = [], root, []
+        while cur or stk:
             if cur:
-                s.append(cur)
+                stk.append(cur)
                 cur = cur.left
             else:
-                cur = s.pop()
-                rank += 1
-                if rank == k:
-                    return cur.val
+                cur = stk.pop()
+                res.append(cur.val)
                 cur = cur.right
-        return float('-inf')
+        return res[k - 1]
