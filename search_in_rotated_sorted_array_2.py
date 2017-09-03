@@ -3,21 +3,19 @@ class Solution(object):
         """
         :type nums: List[int]
         :type target: int
-        :rtype: bool
+        :rtype: int
         """
-        left, right = 0, len(nums) - 1
-        
-        while left <= right:
-            mid = (right + left) / 2
-            
+        l, r = 0, len(nums) - 1
+        while l <= r:
+            mid = l + (r - l) / 2
             if nums[mid] == target:
                 return True
-            elif nums[left] == nums[mid]:
-                left += 1
-            elif (nums[mid] > nums[left] and nums[left] <= target < nums[mid]) or \
-                 (nums[mid] < nums[left] and not (nums[mid] < target <= nums[right])):
-                right = mid - 1
+            elif nums[l] == nums[mid]:   ###handle the duplicates
+                l += 1
+            elif (nums[l] <= target < nums[mid]) or (nums[l] > nums[mid] and not (nums[mid] < target <= nums[r])):
+                r = mid - 1
             else:
-                left = mid + 1
-
-        return False
+                l = mid + 1
+        return  False
+    
+   
