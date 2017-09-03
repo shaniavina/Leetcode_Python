@@ -5,14 +5,16 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
-        left, right = 0, len(nums) - 1
-        while left <= right:
-            mid = (left + right) / 2
-            
+        l, r = 0, len(nums) - 1
+        while l <= r:
+            mid = l + (r - l) / 2
             if nums[mid] == target:
                 return mid
-            elif (nums[left] <= nums[mid] and nums[left] <= target < nums[mid]) or (nums[left] > nums[mid] and not (nums[mid] < target <= nums[right])):
-                right = mid - 1
+            elif (nums[l] <= target < nums[mid]) \
+            or (nums[l] > nums[mid] and not (nums[mid] < target <= nums[r])):
+                r = mid - 1
             else:
-                left = mid + 1
+                l = mid + 1
         return -1
+    
+   
