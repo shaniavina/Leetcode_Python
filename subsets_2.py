@@ -4,13 +4,22 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        result = []
-        self.subsetsWithDupRecu(result, [], sorted(nums))
-        return result
-    def subsetsWithDupRecu(self, result, cur, nums):
-        if not nums:
-            if cur not in result:
-                result.append(cur)
-        else:
-            self.subsetsWithDupRecu(result, cur, nums[1:])
-            self.subsetsWithDupRecu(result, cur + [nums[0]], nums[1:])
+#         ####recursively: DFS
+#         self.res = []
+#         self.subsetsRecu(sorted(nums), 0, [])    
+#         return self.res
+#     def subsetsRecu(self, nums, index, path):
+#         self.res.append(path)
+#         for i in range(index, len(nums)):            
+#             if i > index and nums[i] == nums[i - 1]:  ####handle duplicate: 1. sort; 2. discuss when nums[i] == nums[i-1]
+#                 continue
+#             else:
+#                 self.subsetsRecu(nums, i + 1, path + [nums[i]])
+            
+            
+             ####iteratively
+        res = [[]]
+        nums.sort()
+        for num in nums:
+            res += [i + [num] for i in res if i + [num] not in res]    ###check if it exists
+        return res
