@@ -4,11 +4,17 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        nums.sort()
-        res = [[]]
-        for i in range(len(nums)):
-            size = len(res)
-            for j in range(size):
-                res.append(list(res[j]))
-                res[-1].append(nums[i])     ####add on a new element to every previous subset
-        return res
+        # ####iteratively
+        # res = [[]]
+        # for num in nums:
+        #     res += [i + [num] for i in res]
+        # return res
+    
+        ####recursively: DFS
+        self.res = []
+        self.subsetsRecu(nums, 0, [])
+        return self.res
+    def subsetsRecu(self, nums, index, path):
+        self.res.append(path)
+        for i in range(index, len(nums)):
+            self.subsetsRecu(nums, i + 1, path + [nums[i]])
