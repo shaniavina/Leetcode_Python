@@ -13,23 +13,45 @@ class Solution(object):
         :type q: TreeNode
         :rtype: TreeNode
         """
+        ###iteratively
+        parent = {root:None}
+        stk = [root]
+        while p not in parent or q not in parent:
+            node = stk.pop()
+            if node.left:
+                parent[node.left] = node
+                stk.append(node.left)
+            if node.right:
+                parent[node.right] = node
+                stk.append(node.right)
+        ancestor = set()
+        while p:
+            ancestor.add(p)
+            p = parent[p]
+        while q not in ancestor:
+            q = parent[q]
+        return q
         
         
         
-        # 1. If the current subtree contains both p and q,
-        #    return their LCA.
-        # 2. If only one of them is in that subtree,
-        #    return that one of them.
-        # 3. If neither of them is in that subtree,
-        #    return the node of that subtree.
         
-        if root in (None, p, q):
-            return root
-        left = self.lowestCommonAncestor(root.left, p, q)
-        right = self.lowestCommonAncestor(root.right, p, q)
         
-        if left and right:
-            return root
-        else:
-            return left or right
+        
+        
+        
+        
+        
+        
+        
+#         ####amazing
+#         if root in (None, p, q):
+#             return root
+#         left = self.lowestCommonAncestor(root.left, p, q)
+#         right = self.lowestCommonAncestor(root.right, p, q)
+        
+#         if left and right:
+#             return root
+#         else:
+#             return left or right
     
+        
