@@ -5,15 +5,14 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
-        result = []
-        self.combinationSumRecu(sorted(candidates), result, 0, [], target)
-        return result
-        
-    def combinationSumRecu(self, candidates, result, start, intermediate, target):
+        self.res = []
+        self.dfs(sorted(candidates), target, 0, [])
+        return self.res
+    def dfs(self, nums, target, index, path):
+        if target < 0:
+            return
         if target == 0:
-            result.append(list(intermediate))
-        while start < len(candidates) and candidates[start] <= target:
-            intermediate.append(candidates[start])
-            self.combinationSumRecu(candidates, result, start, intermediate, target - candidates[start])
-            intermediate.pop()
-            start += 1
+            self.res.append(list(path))
+        for i in range(index, len(nums)):
+            self.dfs(nums, target - nums[i], i, path + [nums[i]])
+            
