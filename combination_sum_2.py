@@ -4,19 +4,19 @@ class Solution(object):
         :type candidates: List[int]
         :type target: int
         :rtype: List[List[int]]
-        """
-        result = []
-        self.combinationSum2Recu(sorted(candidates), result, 0, [], target)
-        return result
-        
-    def combinationSum2Recu(self, candidates, result, start, intermediate, target):
+        """                   
+        self.res = []
+        self.dfs(sorted(candidates), 0, [], target)
+        return self.res
+
+    def dfs(self, nums, index, path, target):
+        if target < 0:
+            return
         if target == 0:
-            result.append(list(intermediate))
-        pre = 0
-        while start < len(candidates) and candidates[start] <= target:
-            if pre != candidates[start]:
-                intermediate.append(candidates[start])
-                self.combinationSum2Recu(candidates, result, start + 1, intermediate, target - candidates[start])
-                intermediate.pop()
-                pre = candidates[start]
-            start += 1
+            self.res.append(list(path))
+            
+        for i in range(index, len(nums)):
+            if i > index and nums[i] == nums[i - 1]:
+                continue
+
+            self.dfs(nums, i + 1, path + [nums[i]], target - nums[i])
