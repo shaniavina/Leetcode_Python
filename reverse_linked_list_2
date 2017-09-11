@@ -12,27 +12,24 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
-        guard = ListNode(-1)
-        guard.next = head
-
-        pre = guard
-        node = head
-
-        count = 1
-
-        while count < m and node != None:
-            count += 1
+        if m == n:
+            return head
+        dummy = ListNode(-1)
+        dummy.next = head
+        pre = dummy
+        i, j = 0, 0
+        while i < (m - 1) and pre:
             pre = pre.next
-            node = node.next
-        if count != m:
+            i += 1
+        if not pre or not pre.next:
             return
-
-        for i in range(n - m):
-            if node.next == None:
-                return
-            tmp = pre.next
-            pre.next = node.next
-            node.next = node.next.next
-            pre.next.next = tmp
-
-        return guard.next
+        tail = pre.next
+        
+        while j < (n - m) and tail.next:
+            tmp = tail.next
+            tail.next = tmp.next
+            tmp.next = pre.next
+            pre.next = tmp
+            j += 1
+        return dummy.next
+        
