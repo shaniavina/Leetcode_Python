@@ -6,20 +6,18 @@ class Solution(object):
         """
         if len(prices) < 2:
             return 0
-        profit = [0]
-        maxProfit = 0
-        lowest = prices[0]
         
-        for i in range(1, len(prices)):
-            maxProfit = max(prices[i] - lowest, maxProfit)
-            profit.append(maxProfit)
-            lowest = min(prices[i], lowest)
+        k = 2
+        global_max = [[0 for j in range(len(prices))] for i in range(k + 1)]
+        local_max = [[0 for j in range(len(prices))] for i in range(k + 1)]
         
-        highest = prices[-1]
-        maxProfit = profit[-1]
+        for j in range(1, len(prices)):
+            cur_profit = prices[j] - prices[j - 1]
+            for i in range(1, k + 1):
+                #if cur_profit <0, then the current transaction loses money, else, it can be max_global[i-1][j-1] + cur_profit,
+                #or CANCEL the last day transaction and moves to the current transaction. 
+                local_max[i][j] = max(global_max[i - 1][j - 1] + max(0, cur_profit), local_max[i][j - 1] + cur_profit)
+                #This is more obvious, by looking at whether transaction on day j has influenced max_global or not.
+                global_max[i][j] = max(global_max[i][j - 1], local_max[i][j])
+        return global_max[k][-1]
         
-        for i in range(len(prices) - 2, -1, -1):
-            p = max(0, highest - prices[i])
-            maxProfit = max(maxProfit, profit[i] + p)
-            highest = max(highest, prices[i])
-        return maxProfit
