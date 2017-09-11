@@ -4,15 +4,14 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
-        if not prices:
+        ##buy[i] = max(sell[i-2]-price, buy[i-1])
+        ##sell[i] = max(buy[i-1]+price, sell[i-1])
+        if len(prices) < 2:
             return 0
-        buy, sell, coolDown = [0] * 2, [0] * 2, [0] * 2
-        buy[0] = -prices[0]
-        for i in range(1, len(prices)):
-            ##buy today or bought before
-            buy[i % 2] = max(coolDown[(i - 1) % 2] - prices[i], buy[(i - 1) % 2])
-            ###sell today
-            sell[i % 2] = prices[i] + buy[(i - 1) % 2]
-            ####sold yesterday or before yesterday
-            coolDown[i % 2] = max(coolDown[(i - 1) % 2], sell[(i - 1) % 2])
-        return max(coolDown[(len(prices) - 1) % 2], sell[(len(prices) - 1) % 2])
+        sell, buy, pre_sell, pre_buy = 0, -prices[0], 0, 0
+        for p in prices:
+            pre_buy = buy
+            buy = max(pre_sell - p, pre_buy)
+            pre_sell = sell
+            sell = max(pre_buy + p, pre_sell)
+        return sell
