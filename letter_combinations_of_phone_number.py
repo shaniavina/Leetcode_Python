@@ -6,13 +6,18 @@ class Solution(object):
         """
         if not digits:
             return []
-        lookup, result = ["", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"], [""]
         
-        for digit in reversed(digits):
-            choices = lookup[int(digit)]
-            m, n = len(choices), len(result)
-            result += [result[i % n] for i in range(n, m * n)]
+        lookup = { '2': 'abc',
+        '3': 'def',
+        '4': 'ghi',
+        '5': 'jkl',
+        '6': 'mno',
+        '7': 'pqrs',
+        '8': 'tuv',
+        '9': 'wxyz'}
+
+        res = [''] if digits else []  ###[''] instead of []
+        for d in digits:
+            res = [r + e for e in lookup[d] for r in res]
+        return res
             
-            for i in range(m * n):
-                result[i] = choices[i / n] + result[i]
-        return result
