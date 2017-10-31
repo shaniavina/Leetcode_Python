@@ -42,3 +42,5 @@ class Solution(object):
                 for i in next.getList():
                     stk.append((i, d + 1))
         return res
+
+    
