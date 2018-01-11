@@ -1,51 +1,30 @@
-class MaxStack(object):
-
+# Time:  push:    O(1)
+#        pop:     O(n), there is no built-in SortedDict in python. If applied, it could be reduced to O(logn)
+#        popMax:  O(n)
+#        top:     O(1)
+#        peekMax: O(1)
+# Space: O(n), n is the number of values in the current stack
+class maxStack(object):
     def __init__(self):
-        """
-        initialize your data structure here.
-        """
-        self.stk=[]
-        self.maxstk=[]
-
+        self.stk = []
+        self.maxStk = []
     def push(self, x):
-        """
-        :type x: int
-        :rtype: void
-        """
         self.stk.append(x)
-        if not self.maxstk:
-            self.maxstk.append(x)
+        if not self.maxStk:
+            self.maxStk.append(x)
         else:
-            self.maxstk.append(max(x,self.maxstk[-1]))
-
+            self.maxStk.append(max(x, self.maxStk[-1]))
     def pop(self):
-        """
-        :rtype: int
-        """
-        self.maxstk.pop()
+        self.maxStk.pop()
         return self.stk.pop()
-    def top(self):
-        """
-        :rtype: int
-        """
-        return self.stk[-1]
-
     def peekMax(self):
-        """
-        :rtype: int
-        """
-        return self.maxstk[-1]
-
+        return self.maxStk[-1]
     def popMax(self):
-        """
-        :rtype: int
-        """
-        n=self.maxstk.pop()
-        i=len(self.stk)-1
-        tmp=[]
-        while n!=self.stk[-1]:
-            tmp.append(self.pop())
-        ret=self.stk.pop()
-        for i in xrange(len(tmp)-1,-1,-1):
-            self.push(tmp[i])
+        n = self.maxStk.pop()
+        tmp = []
+        while n!= self.stk[-1]:
+            tmp.append(self.stk.pop())
+        res = self.stk.pop()
+        for i in reversed(range(len(tmp))):
+            self.stk.push(tmp[i])
         return ret
