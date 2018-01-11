@@ -29,6 +29,7 @@ class Solution(object):
         :type nestedList: List[NestedInteger]
         :rtype: int
         """
+        #####using stk of tuple
         if not nestedList:
             return 0
         stk, res = [], 0
