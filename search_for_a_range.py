@@ -5,20 +5,33 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        # Find the first index where target >= nums[idx]
-        left = self.binarySearch(lambda x, y: x >= y, nums, target)
-        if left >= len(nums) or nums[left] != target:
+        l, r = 0, len(nums) - 1
+        res = [-1] * 2
+        if not nums:
             return [-1, -1]
-        # Find the first index where target < nums[idx]
-        right = self.binarySearch(lambda x, y: x > y, nums, target)
-        return [left, right - 1]
-    
-    def binarySearch(self, compare, nums, target):
-        left, right = 0, len(nums)
-        while left < right:
-            mid = left + (right - left) / 2
-            if compare(nums[mid], target):
-                right = mid
+        ###left side
+        while l < r:
+            mid = l + (r - l) / 2
+            if target > nums[mid]:
+                l = mid + 1
             else:
-                left = mid + 1
-        return left
+                r = mid
+        if nums[l] == target:
+            res[0] = l
+        else:
+            return [-1, -1]
+        
+        l, r = 0, len(nums) - 1
+        ###right side
+        while l < r:
+            mid = l + (r - l) / 2 + 1
+            if target < nums[mid]:
+                r = mid - 1
+            else:
+                l = mid
+        if nums[r] == target:
+            res[1] = r
+        else:
+            return [-1, -1]
+        return res
+        
