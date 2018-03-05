@@ -43,17 +43,16 @@ class Solution(object):
                 for i in next.getList():
                     stk.append((i, d + 1))
         return res
-
+##time:o(n)
+##space:o(h)
     #############recursion
-from scipy.constants.constants import electron_mass
-class Solution(object):
     def NestedListWeightSum(self, input_list):
         return self.CountHelper(1, input_list)
     
     def CountHelper(self, weight, input_list):
         sum = 0
         for ele in input_list:
-            if isinstance(ele, (list)):
+            if isinstance(ele, list):
                 sum += self.CountHelper(weight + 1, ele)
             else:
                 sum += weight * ele
