@@ -1,18 +1,22 @@
+from collections import defaultdict
+
 class TwoSum(object):
 
     def __init__(self):
         """
-        Initialize your data structure here.
+        initialize your data structure here
         """
-        self.lookup = collections.defaultdict(int)
+        self.lookup = defaultdict(int)
+        
+
 
     def add(self, number):
         """
-        Add the number to an internal data structure..
-        :type number: int
-        :rtype: void
+        Add the number to an internal data structure.
+        :rtype: nothing
         """
         self.lookup[number] += 1
+
 
     def find(self, value):
         """
@@ -22,12 +26,17 @@ class TwoSum(object):
         """
         for key in self.lookup:
             num = value - key
-            if num in self.lookup and (self.lookup[num] > 1 or num != key):
+            if num in self.lookup and (num != key or self.lookup[key] > 1):
                 return True
         return False
 
 
-# Your TwoSum object will be instantiated and called as such:
-# obj = TwoSum()
-# obj.add(number)
-# param_2 = obj.find(value)
+if __name__ == "__main__":
+    Sol = TwoSum()
+    
+    for i in (1, 3, 5):
+        Sol.add(i)
+    
+    for i in (4, 7):
+        print Sol.find(i)
+                
