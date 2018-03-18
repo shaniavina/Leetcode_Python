@@ -9,7 +9,7 @@ class WordDistance(object):
         
         i, j, dist = 0, 0, float('inf')
         while i < len(indexes1) and j < len(indexes2):
-            dist = min(dist, abs(indexes[i] - indexes2[j]))
+            dist = min(dist, abs(indexes1[i] - indexes2[j]))
             if indexes1[i] < indexes[j]:
                 i += 1
             else:
