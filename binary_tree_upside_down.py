@@ -20,7 +20,6 @@ class Solution:
             p = left
         return parent
 
-
 # Time:  O(n)
 # Space: O(n)
 class Solution2:
