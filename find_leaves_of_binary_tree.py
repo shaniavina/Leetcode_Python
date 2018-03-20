@@ -11,18 +11,17 @@
 class Solution(object):
     def findLeaves(self, root):
         self.res = []
-        self.findLeavesRecu(root)
+        self.findleavesRecu(root)
         return self.res
     def findLeavesRecu(self, node):
         if not node:
             return -1
-        level = 1 + max(findLeavesRecu(node.left) +  findLeavesRecu(node.right))
+        level = 1 + max(self.findLeavesRecu(node.left), self.findLeavesRecu(node.right))
         if len(self.res) < level + 1:
             self.res.append([])
         self.res[level].append(node.val)
         return level
-    
-    
+        
 ####second
 class Solution(object):
     def findLeaves(self, root):
