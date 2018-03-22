@@ -5,10 +5,10 @@ class Solution(object):
         :rtype: str
         """
         numeral_map = {1: "I", 4: "IV", 5: "V", 9: "IX", 10: "X", 40: "XL", 50: "L", 90: "XC", 100: "C", 400: "CD", 500: "D", 900: "CM", 1000: "M"}
-        keyset, result = sorted(numeral_map.keys()), ""
+        key_set, res = sorted(numeral_map.keys(), reverse = True), ''
         while num > 0:
-            for key in reversed(keyset):
+            for key in key_set:
                 while num / key > 0:
                     num -= key
-                    result += numeral_map[key]
-        return result
+                    res += numeral_map[key]
+        return res
