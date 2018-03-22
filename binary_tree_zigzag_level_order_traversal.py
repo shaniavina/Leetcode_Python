@@ -11,27 +11,44 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[List[int]]
         """
-        if not root:
-            return []
-        q = [root]
-        res = []
-        level = 1   ####level parameter to control the output order
-        while q:
-            next_q = collections.deque([])
-            tmp_res = []
-            
-            for node in q:
-                tmp_res.append(node.val)
-                if node.left:
-                    next_q.append(node.left)
-                if node.right:
-                    next_q.append(node.right)
-            if level % 2:
-                res.append(tmp_res)
-            else:
-                res.append(tmp_res[::-1])
-                
-            level += 1
-            q = next_q
+        self.res = []
+        self.zigzagLevelOrderRecu(root, 0)
+        return self.res
+    def zigzagLevelOrderRecu(self, node, level):
+        if not node:
+            return 
+        if len(self.res) == level:
+            self.res.append([node.val])
+        elif level % 2:
+            self.res[level].insert(0, node.val)
+        else:
+            self.res[level].append(node.val)
+        self.zigzagLevelOrderRecu(node.left, level + 1)
+        self.zigzagLevelOrderRecu(node.right, level + 1)
         
-        return res
+        
+        
+#         ####QUEUE
+#         if not root:
+#             return []
+#         q = collections.deque([root])
+#         res = []
+#         level = 1   ####level parameter to control the output order
+#         while q:
+#             next_q = collections.deque([])
+#             tmp = []
+#             for node in q:
+#                 tmp.append(node.val)
+#                 if node.left:
+#                     next_q.append(node.left)
+#                 if node.right:
+#                     next_q.append(node.right)
+#             if level % 2:
+#                 res.append(tmp)
+#             else:
+#                 res.append(tmp[::-1])
+#             level += 1
+#             q = next_q
+#         return res
+    
+    
