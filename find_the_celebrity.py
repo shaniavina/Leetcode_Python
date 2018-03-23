@@ -20,3 +20,4 @@ class Solution(object):
             if (i != res and knows(res, i)) or (not knows(i, res)):
                 return -1
         return res
+ 
