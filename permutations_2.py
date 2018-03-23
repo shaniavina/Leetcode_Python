@@ -4,14 +4,14 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        solutions = [[]]
-        
-        for num in nums:
-            next = []
-            for sol in solutions:
-                for i in range(len(sol) + 1):
-                    candidate = sol[:i] + [num] + sol[i:]
-                    if candidate not in next:
-                        next.append(candidate)
-            solutions = next
-        return solutions
+    
+        perms = [[]]
+        for n in nums:
+            new_perms = []
+            for perm in perms:
+                for i in range(len(perm) + 1):
+                    temp = perm[i:] + [n] + perm[:i]
+                    if temp not in new_perms:   ###solve the problem of duplicates
+                        new_perms.append(temp)
+            perms = new_perms
+        return perms
