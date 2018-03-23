@@ -36,13 +36,6 @@ class Solution(object):
         
         
         
-        
-        
-        
-        
-        
-        
-        
 #         ####amazing
 #         if root in (None, p, q):
 #             return root
