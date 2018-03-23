@@ -5,10 +5,11 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
+        res = [-1, -1]
         l, r = 0, len(nums) - 1
-        res = [-1] * 2
+        ####have to consider about null
         if not nums:
-            return [-1, -1]
+            return res
         ###left side
         while l < r:
             mid = l + (r - l) / 2
@@ -16,12 +17,11 @@ class Solution(object):
                 l = mid + 1
             else:
                 r = mid
-        if nums[l] == target:
-            res[0] = l
-        else:
-            return [-1, -1]
+        if nums[l] != target:   ###have to get exactly the same value as target
+            return res
+        res[0] = l
         
-        l, r = 0, len(nums) - 1
+        r = len(nums) - 1
         ###right side
         while l < r:
             mid = l + (r - l) / 2 + 1
@@ -29,9 +29,6 @@ class Solution(object):
                 r = mid - 1
             else:
                 l = mid
-        if nums[r] == target:
-            res[1] = r
-        else:
-            return [-1, -1]
+        res[1] = r
         return res
         
