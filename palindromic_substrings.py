@@ -16,7 +16,7 @@ class Solution(object):
         #         right += 1
         # return res
         
-        
+       
         
         ####Manacher's Algorithm
         t = '#'.join('^{}$'.format(s))
