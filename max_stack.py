@@ -27,4 +27,4 @@ class maxStack(object):
         res = self.stk.pop()
         for i in reversed(range(len(tmp))):
             self.stk.push(tmp[i])
-        return ret
+        return res
