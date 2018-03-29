@@ -4,11 +4,11 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        # ####iteratively
-        # res = [[]]
-        # for num in nums:
-        #     res += [i + [num] for i in res]
-        # return res
+        ####iteratively
+        res = [[]]
+        for num in nums:
+            res += [i + [num] for i in res]
+        return res
     
         ####recursively: DFS
         self.res = []
