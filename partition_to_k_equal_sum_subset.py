@@ -43,11 +43,8 @@ class Solution(object):
         return dfs(k,0,0)
         
         
-        
-        
-#### Time:  O(k^(n-k) * k!)
-# # Space: O(n)
-# # DFS solution with pruning.
+
+
 #         total = sum(nums)
 #         if total % k or total / k < max(nums):
 #             return False
