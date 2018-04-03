@@ -1,3 +1,4 @@
+import collections
 class MovingAverage(object):
 
     def __init__(self, size):
