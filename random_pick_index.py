@@ -14,14 +14,13 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
-        res = -1 
-        cnt = 0
+        res, cnt = -1, 0
         for i in range(len(self.nums)):
-            if self.nums[i] != target:
-                continue
-            res = i if randint(1, cnt + 1) == 1 else res
-            cnt += 1
+            if self.nums[i] == target:
+                res = i if randint(1, cnt + 1) == 1 else res
+                cnt += 1
         return res
+        
 
 
 # Your Solution object will be instantiated and called as such:
