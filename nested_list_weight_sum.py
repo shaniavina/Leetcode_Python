@@ -23,41 +23,30 @@
 #        :rtype List[NestedInteger]
 #        """
 
-class Solution(object):
-    def depthSum(self, nestedList):
-        """
-        :type nestedList: List[NestedInteger]
-        :rtype: int
-        """
-        #####using stk of tuple
-        if not nestedList:
-            return 0
-        stk, res = [], 0
-        for n in nestedList:
-            stk.append((n, 1))
-        while stk:
-            next, d = stk.pop(0)
-            if next.isInteger():
-                res += d * next.getInteger()
+###--------------weighted sum------------------###
+def depthSum(nested_list):
+    if not nested_list:
+        return 0
+    res, depth = 0, 1
+    while nested_list:
+        next_level = []
+        for n in nested_list:
+            if n.isInteger():
+                res += depth * n.getInteger()
             else:
-                for i in next.getList():
-                    stk.append((i, d + 1))
-        return res
-##time:o(n)
-##space:o(h)
-    #############recursion
-    def NestedListWeightSum(self, input_list):
-        return self.CountHelper(1, input_list)
-    
-    def CountHelper(self, weight, input_list):
-        sum = 0
-        for ele in input_list:
-            if isinstance(ele, list):
-                sum += self.CountHelper(weight + 1, ele)
-            else:
-                sum += weight * ele
-        return sum
-    
-slt = Solution()
-print(slt.NestedListWeightSum([[1,1],2,[1,1]]))
-print(slt.NestedListWeightSum([1,[4,[6]]]))
+                next_level += n.getList()
+        depth += 1
+        nested_list = next_level
+    return res
+
+###recursion
+def depthSum2(nested_list):
+    return depthSum2Recu(1, nested_list)
+def depthSum2Recu(depth, nested_list):
+    res = 0
+    for n in nested_list:
+        if n.isInteger():
+            res += depth * n.getInteger()
+        else:
+            res += depthSum2Recu(depth + 1, n.getList())
+    return res
