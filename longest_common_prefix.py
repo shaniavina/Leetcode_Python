@@ -4,7 +4,7 @@ class Solution(object):
         :type strs: List[str]
         :rtype: str
         """
-        if not strs:
+        if not strs:  ###can not put in 'if strs is None:'
             return ''
         
         for i in range(len(strs[0])):
