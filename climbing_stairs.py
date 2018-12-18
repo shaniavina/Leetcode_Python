@@ -7,8 +7,8 @@ class Solution(object):
         pre, cur = 1, 2
         
         for i in range(n - 1):
-            a = cur
+            temp = cur
             cur += pre
-            pre = a
+            pre = temp
         return pre
 ######too slow recursively
