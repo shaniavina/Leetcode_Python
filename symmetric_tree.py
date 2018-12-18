@@ -39,7 +39,3 @@ class Solution(object):
 #         if not left or not right or left.val != right.val:
 #             return False
 #         return self.isSymmetricRecu(left.left, right.right) and self.isSymmetricRecu(left.right, right.left)
-
-
-        
-        
