@@ -19,5 +19,4 @@ class Solution(object):
                 cur.next = cur.next.next
             else:
                 cur = cur.next
-        
         return head       
