@@ -17,9 +17,8 @@ class Solution(object):
             return []
         q = [root]
         res = []
-        
         while q:
-            next_q = collections.deque([])
+            next_q = []
             tmp_res = []
             for node in q:
                 tmp_res.append(node.val)
@@ -27,8 +26,7 @@ class Solution(object):
                     next_q.append(node.left)
                 if node.right:
                     next_q.append(node.right)
-            res.insert(0, tmp_res)       #####instead of .reverse(), you can use insert on the top of queue
+            res.insert(0, tmp_res)
             q = next_q
-        
         return res
         
