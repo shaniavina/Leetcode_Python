@@ -18,7 +18,6 @@ class Solution(object):
                 previous = current
                 currentRow += 1
         return current
-
     
 #####second 
 class Solution(object):
