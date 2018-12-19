@@ -17,7 +17,7 @@ class Solution(object):
     def isBalancedRecu(self, root):
         if not root:
             return 0
-        left = self.isBalancedRecu(root.left)    ####get height
+        left = self.isBalancedRecu(root.left)    ####get depth
         right = self.isBalancedRecu(root.right)
         if left < 0 or right < 0 or abs(left - right) > 1:
             return -1
