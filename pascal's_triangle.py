@@ -8,7 +8,7 @@ class Solution(object):
         for i in range(numRows):
             result.append([])
             for j in range(i + 1):
-                if j in (0, i):     #####in these two 
+                if j in (0, i):     #####the frist and the last
                     result[i].append(1)
                 else:
                     result[i].append(result[i - 1][j - 1] + result[i - 1][j])
