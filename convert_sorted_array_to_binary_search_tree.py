@@ -20,6 +20,3 @@ class Solution(object):
         node.left = self.sortedArrayToBSTRecu(nums, left, mid)
         node.right = self.sortedArrayToBSTRecu(nums, mid + 1, right)
         return node
-    
-    
-    
