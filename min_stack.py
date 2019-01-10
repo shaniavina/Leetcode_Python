@@ -7,7 +7,6 @@ class MinStack(object):
         self.min = None
         self.stack = []
         
-
     def push(self, x):
         """
         :type x: int
