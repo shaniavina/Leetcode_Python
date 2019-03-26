@@ -13,6 +13,6 @@ class Solution(object):
                 right = mid - 1
             else:
                 left = mid + 1
-        return left - 1
+        return left - 1   #### truncated to integer
     
   
