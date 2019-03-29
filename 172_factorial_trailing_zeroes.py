@@ -4,8 +4,8 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        result = 0
-        while n > 0:     ####while n:
-            result += n / 5
+        res = 0
+        while n > 0:
+            res += n / 5
             n /= 5
-        return result
+        return res
