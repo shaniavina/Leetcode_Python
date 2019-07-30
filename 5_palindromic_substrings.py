@@ -4,19 +4,17 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        # ####there should be 2*n -1 center
-        # n = len(s)
-        # res = 0
-        # for i in range(2 * n - 1):
-        #     left = i / 2
-        #     right = left + i % 2
-        #     while left >= 0 and right < n and s[left] == s[right]:
-        #         res += 1
-        #         left -= 1
-        #         right += 1
-        # return res
-        
-       
+        if not s:
+            return ''
+        maxLen, start = 1, 0
+        for i in range(1, len(s)):
+            if i - maxLen >= 1 and s[i - maxLen - 1: i + 1] == s[i - maxLen - 1: i + 1][::-1]:
+                start = i - maxLen - 1
+                maxLen += 2
+            if i - maxLen >= 0 and s[i - maxLen: i + 1] == s[i - maxLen: i + 1][::-1]:
+                start = i - maxLen
+                maxLen += 1
+        return s[start: start + maxLen]
         
         ####Manacher's Algorithm
         t = '#'.join('^{}$'.format(s))
