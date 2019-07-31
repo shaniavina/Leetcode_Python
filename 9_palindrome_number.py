@@ -12,4 +12,4 @@ class Solution(object):
             x_copy /= 10
         return x == reverse
 
-    
+   
