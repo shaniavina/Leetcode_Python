@@ -1,0 +1,20 @@
+Finished #	Title	easy	medium	hard	Date	Note	strats
+1	2Sum_1	1	0	0	7/24/2019	enumerate	
+167	2Sum_2	1	0	0	7/24/2019	two pointers, O(n)	
+15	3Sum	0	1	0	7/24/2019	same as 4sum	
+18	4Sum	0	1	0	7/24/2019	sort/find two pointers/handle unique pairs	
+2	Add Two Numbers	0	1	0	7/29/2019	dummy, cur	
+43	Multiply Strings	0	1	0	7/29/2019	int(num1[i]) * int(num2[j]) should be at position i+ j; skip leading 0	
+67	Add Binary	1	0	0	7/29/2019	exhaustive search	
+3	Longest Substring Without Repeating Characters	0	1	0	7/30/2019	lookup the last index of each letter	
+4	Median of Two Sorted Arrays	0	0	1	7/30/2019	binary search; getKth	need to come back
+5	Longest Palindromic Substring	0	1	0	7/30/2019	dynamic;when you increase s by 1 character, you could only increase maxPalindromeLen by 1 or 2	manarche
+6	ZigZag Conversion	0	1	0	7/30/2019	find the step length	
+7	Reverse Integer	1	0	0	7/30/2019	max integer is 2 ** 31 -1	
+190	Reverse Bits	1	0	0	7/30/2019	n & 1 --> ood or even	
+8	String to Integer (atoi)	0	1	0	7/31/2019	strip(); always make sure i is within len(str); str[;i'] could compare with '0' directly; ord(str[i])	
+65	Valid Number	0	0	1	7/31/2019	num, dot, exp, sign	
+9	Palindrome Number	1	0	0	7/31/2019	x_copy	
+10	Regular Expression Matching	0	0	1	1/1/1900	len == 1 or pattern[1] != '*'	need to come back
+44	Wildcard Matching	0	0	1	7/31/2019		no solution yet
+11	Container With Most Water	0	1	0	8/1/2019	start from two ends	
