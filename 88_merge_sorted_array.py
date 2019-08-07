@@ -18,4 +18,4 @@ class Solution(object):
         if n > 0:
             nums1[:n] = nums2[:n]
 
-            
+  
