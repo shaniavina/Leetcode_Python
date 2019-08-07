@@ -21,3 +21,5 @@ if __name__ == "__main__":
     root.right = TreeNode(3)
     root.left.left = TreeNode(4)
     print Solution().maxDepth(root)
+
+    
