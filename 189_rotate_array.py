@@ -6,7 +6,7 @@ class Solution(object):
         :rtype: void Do not return anything, modify nums in-place instead.
         """
         # k %= len(nums)    ####k needs to be less than len(nums)
-        # nums[:] = nums[-k:] + nums[:-k] ####-k or len(nums) - k
+        # nums[:] = nums[-k:] + nums[:-k] ####in place nums[:]
         
         
         ###reversion
