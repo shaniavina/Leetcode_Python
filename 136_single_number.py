@@ -4,7 +4,6 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-       
         # ####using set
         # lookup = set()
         # for num in nums:
