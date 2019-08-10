@@ -4,11 +4,15 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        ###local max, global max
-        if max(nums) < 0:
-            return max(nums)
-        global_max, local_max = float("-inf"), 0
-        for x in nums:
-            local_max = max(0, local_max + x)
-            global_max = max(global_max, local_max)
+        if not nums:
+            return 0
+        # if max(nums) < 0:
+        #     return max(nums)
+        global_max, local_max = float('-inf'), 0
+        for num in nums:
+            local_max = max(local_max + num, num)
+            global_max = max(local_max, global_max)
         return global_max
+            
+            
+            
