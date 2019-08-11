@@ -5,7 +5,7 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        
+      
 ####hash table
         lookup = {}
         for i, num in enumerate(nums):
