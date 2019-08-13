@@ -18,7 +18,7 @@ class Solution(object):
         while l2:
             stk2.append(l2.val)
             l2 = l2.next
-        
+
        
         pre, cur, sum = None, None, 0
         while stk1 or stk2:
