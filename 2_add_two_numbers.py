@@ -28,4 +28,4 @@ class Solution(object):
         return dummy.next
             
             
-    
+  
