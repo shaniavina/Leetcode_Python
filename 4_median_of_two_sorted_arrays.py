@@ -6,6 +6,13 @@ class Solution(object):
         :rtype: float
         """
         #time: O(log(m+n))
+#         1) len(left_part) == len(right_part)
+# 2) max(left_part) <= min(right_part)
+
+# (1) i + j == m - i + n - j (or: m - i + n - j + 1)
+#     if n >= m, we just need to set: i = 0 ~ m, j = (m + n + 1)/2 - i
+# (2) B[j-1] <= A[i] and A[i-1] <= B[j]
+
         len1, len2 = len(nums1), len(nums2)
         if (len1 + len2) % 2 == 1:
             return self.getKth(nums1, nums2, (len1 + len2) / 2 + 1)
