@@ -7,7 +7,7 @@ class Solution(object):
         res = []
         self.generateParenthesisRecu(res, '', n, n)
         return res
-    def generateParenthesisRecu(self, res, current, left, right):
+    def generateParenthesisRecu(self, res, current, left, right):  ### the count of left parenthesis left
         if left == 0 and right == 0:
             res.append(current)
         if left > 0:
