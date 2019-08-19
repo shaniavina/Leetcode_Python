@@ -7,7 +7,7 @@ class Solution(object):
         stk = []
         goodPair = {"(":")","[":"]","{":"}"}
         for c in s:
-            if c in ['[','(','{']:
+            if c in goodPair:
                 stk.append(c)
             else:
                 if not stk:
