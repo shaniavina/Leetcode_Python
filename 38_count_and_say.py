@@ -15,6 +15,7 @@ class Solution(object):
                 else:
                     temp.append(str(count))
                     temp.append(s[idx - 1])
+                    count = 1 ### key point!!
             temp.append(str(count))
             temp.append(s[-1])
             s = ''.join(temp)
