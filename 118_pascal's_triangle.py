@@ -4,12 +4,8 @@ class Solution(object):
         :type numRows: int
         :rtype: List[List[int]]
         """
-        result = []
+        res, row = [], [1]
         for i in range(numRows):
-            result.append([])
-            for j in range(i + 1):
-                if j in (0, i):     #####the frist and the last
-                    result[i].append(1)
-                else:
-                    result[i].append(result[i - 1][j - 1] + result[i - 1][j])
-        return result
+            res.append(row)
+            row = [1] + [row[k] + row[k + 1] for k in range(len(row) - 1)] + [1]
+        return res
