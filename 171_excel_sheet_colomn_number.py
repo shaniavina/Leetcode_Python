@@ -9,5 +9,11 @@ class Solution(object):
             res *= 26
             res += ord(char) - ord('A') + 1
         return res
-if __name__ == "__main__":
-    print Solution().titleToNumber("AA")
+
+    #### second
+    
+    s = s[::-1]
+        res = 0
+        for power, char in enumerate(s):
+            res += (ord(char) - ord('A') + 1) * (26 ** power)
+        return res
