@@ -4,15 +4,14 @@ class Solution(object):
         :type x: int
         :rtype: int
         """
-        if x in (0, 1):
-            return x
-        left, right = 1, x / 2   ####can not starting from 0 since we have it as nominator
-        while left <= right:
-            mid = left + (right - left) / 2   ####write in this way: overflow!
-            if mid > x / mid:      
-                right = mid - 1
+        ## binary search O(lgn)
+        l, r = 0, x
+        while l <= r:
+            mid = l + (r - l) / 2
+            if mid * mid <= x < (mid + 1) * (mid + 1):
+                return mid
+            elif mid * mid > x:
+                r = mid
             else:
-                left = mid + 1
-        return left - 1   #### truncated to integer
-    
-  
+                l = mid + 1
+            
