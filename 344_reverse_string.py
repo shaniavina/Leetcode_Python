@@ -4,13 +4,14 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
-        res = [0] * (len(s))
-        j = len(s)
-        for i in range(len(s)):
+        r = list(s)
+        i, j  = 0, len(r) - 1
+        while i < j:
+            r[i], r[j] = r[j], r[i]
+            i += 1
             j -= 1
-            res[j] = s[i]
-            
-        return "".join(res)
+
+        return "".join(r)
     
     
  ##solution 2
