@@ -17,14 +17,3 @@ class Solution(object):
         return num_i
 
     
-    ####second solution
-    
-    def rob2(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        last, now = 0, 0
-        for i in nums:
-            last, now = now, max(last + i, now)
-        return now
