@@ -16,7 +16,7 @@ class Solution(object):
                 lookup[w] = 1
         
         for c in t:
-            if c not in lookup or lookup[c] == 0:
+            if c not in lookup or lookup[c] <= 0:
                 return False
             else:
                 lookup[c] -= 1
