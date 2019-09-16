@@ -9,6 +9,3 @@ class Solution:
             result |= n & 1
             n >>= 1
         return result
-
-    
-    
