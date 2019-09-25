@@ -1,27 +1,32 @@
 class Solution(object):
-    def minWindow(self, s, t):
+    def minWindow(self, string, target):
         """
-        :type s: str
-        :type t: str
+        :type string: str
+        :type target: str
         :rtype: str
         """
-        current_count = [0 for i in range(52)]
-        expect_count = [0 for i in range(52)]
-        for char in t:
-            expect_count[ord(char) - ord('a')] += 1
-        
-        count, start, min_start, min_width = 0, 0, 0, float('inf')
-        for i in range(len(s)):
-            current_count[ord(s[i]) - ord('a')] += 1
-            if current_count[ord(s[i]) - ord('a')] <= expect_count[ord(s[i]) - ord('a')]:
-                count += 1
-            if count == len(t):
-                while expect_count[ord(s[start]) - ord('a')] == 0 or current_count[ord(s[start]) - ord('a')] > expect_count[ord(s[start]) - ord('a')]:
-                    current_count[ord(s[start]) - ord('a')] -= 1
-                    start += 1
-                if min_width > i - start + 1:
-                    min_width = i - start + 1
-                    min_start = start
-        if min_width == float('inf'):
-            return ''
-        return s[min_start:min_start + min_width]
+        # counter represents the number of chars of t to be found in s
+        target_map = collections.Counter(target)
+
+        count = len(target)
+        start = end = head = 0
+        min_substring_length = len(s) + 1
+        # Move end to find a valid window.
+        while end < len(string):
+            #if character doesn't exist in map it returns 0
+            if target_map[string[end]] > 0:
+                count -= 1
+            target_map[string[end]] -= 1
+            end += 1
+            # When we found a valid window, move start to find smaller window.
+            while count == 0:
+                if (end - start) < min_substring_length:
+                    min_substring_length = end - start
+                    head = start
+                target_map[string[start]] += 1
+                # When char exists in target, increase counter.
+                if target_map[string[start]] >0:
+                    count += 1
+
+                start += 1
+        return "" if min_substring_length == len(s) + 1 else string[head:head + min_substring_length]
