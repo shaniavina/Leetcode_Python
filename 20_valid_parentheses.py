@@ -4,16 +4,22 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        stk = []
-        goodPair = {"(":")","[":"]","{":"}"}
-        for c in s:
-            if c in goodPair:
-                stk.append(c)
+        # stack
+        # space: O(1)
+        
+        stack = []
+        lookup = {'(':')', '[':']','{':'}'}
+        for char in s:
+            if char in lookup:
+                stack.append(lookup[char])
             else:
-                if not stk:
-                    return False
-                else:
-                    b = stk.pop()     ### before pop(), have to consider if it is null or not
-                    if goodPair[b] != c:
+                if len(stack) != 0:
+                    top_element = stack.pop() ### before pop(), have to consider if it is null or not
+                    if char != top_element:
                         return False
-        return len(stk) == 0
+                    else:
+                        continue
+                else:
+                    return False
+        return len(stack) == 0
+            
