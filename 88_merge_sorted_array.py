@@ -5,9 +5,11 @@ class Solution(object):
         :type m: int
         :type nums2: List[int]
         :type n: int
-        :rtype: void Do not return anything, modify nums1 in-place instead.
+        :rtype: None Do not return anything, modify nums1 in-place instead.
         """
-        ####beautiful code   ####from the end
+        # reversed order from the end
+        # space: O(1)
+        # time: O(m+n)
         while m > 0 and n > 0:
             if nums1[m - 1] > nums2[n - 1]:
                 nums1[m + n - 1] = nums1[m - 1]
@@ -17,5 +19,4 @@ class Solution(object):
                 n -= 1
         if n > 0:
             nums1[:n] = nums2[:n]
-
-  
+            
