@@ -1,17 +1,17 @@
 class Solution(object):
     def reverseString(self, s):
         """
-        :type s: str
-        :rtype: str
+        :type s: List[str]
+        :rtype: None Do not return anything, modify s in-place instead.
         """
-        r = list(s)
-        i, j  = 0, len(r) - 1
+        
+        i, j = 0, len(s) - 1
         while i < j:
-            r[i], r[j] = r[j], r[i]
+            s[i], s[j] = s[j], s[i]
             i += 1
             j -= 1
-
-        return "".join(r)
+        return ''.join(s)
+    
     
     
  ##solution 2
